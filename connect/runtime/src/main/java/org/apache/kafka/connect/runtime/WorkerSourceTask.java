@@ -262,6 +262,7 @@ class WorkerSourceTask extends WorkerTask {
 
     protected List<SourceRecord> poll() throws InterruptedException {
         try {
+            log.info("[KC] Polling...");
             return task.poll();
         } catch (RetriableException | org.apache.kafka.common.errors.RetriableException e) {
             log.warn("{} failed to poll records from SourceTask. Will retry operation.", this, e);
